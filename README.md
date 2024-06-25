@@ -11,7 +11,8 @@ Ekaterina Larina<sup>1</sup>, Adam Woodhouse<sup>2,3</sup>, Anshuman Swain<sup>4
 <sup>6</sup> Department of Earth and Planetary Sciences, University of New Mexico, Albuquerque, NM 87131, U.S.A.
 
 ## Brief file descriptions for this repository
-
+### Data
+**Triton_df_Oceans.RData** This file contains three dataframes with planktic foraminifera data for the Atlantic, Pacific, and Indian Oceans, derived from the Triton database used in this study.
 ### Base scripts in R
 **Ecogroups_Relative_Abundance.R** This script calculates ecogroup relative abundance and produces the raw plots for Figure 3 of the manuscript, as well as Figures 2 and 8 of the supplementary material. 
 
