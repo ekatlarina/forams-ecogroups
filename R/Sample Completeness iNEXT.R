@@ -1,8 +1,8 @@
 # Sample Completeness Evaluation using iNEXT package
 
-# This script performs assessment of dataset completeness. Here, we examined the sampling coverage, 
-# frequency of each unique ecogroup within a paleolatitudinal band during each time interval, 
-# utilizing the iNEXT package
+# This script assesses of dataset completeness. Here, we examined 
+# the sampling coverage and frequency of each unique ecogroup within a paleolatitudinal 
+# band during each time interval, utilizing the iNEXT package.
 
 # install relevant packages for assessing sample completeness
 ## install iNEXT package from CRAN

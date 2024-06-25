@@ -1,7 +1,8 @@
 
-# This script calculates fitted linear models of five ecogroups' relative abundances by hemisphere 
-# across the Atlantic, Pacific, and Indian Oceans. It produces the raw plots of figures 3 to 7
-# of the supplementary material. Final figures were created in Illustrator.
+# This script calculates fitted linear models of the relative abundances of 
+# five ecogroups by hemisphere across the Atlantic, Pacific, and Indian Oceans.
+# It produces the raw plots of figures 3 to 7 of the supplementary material. 
+# Final figures were created in Illustrator.
 
 # install relevant packages for plotting the data
 install.packages("ggplot2")
@@ -12,8 +13,6 @@ library(ggplot2) # used for plotting data
 library(cowplot) # used for streamlining plot theme and plot annotations for 'ggplot2'
 
 #### 1. set paths for source files and configure the environment. ####
-
-setwd("/Users/ekaterina.larina/Dropbox/DPF project/Pliocene to Anthropocene/my R codes/Eco Morpho Change Woodhouse/RData")
 
 # set the working directory 
 # setwd(" YOUR WOKRING DIRECTORY ")
@@ -32,8 +31,6 @@ numbers <- seq(from = 1.8, to = 3.9, by=0.15)
 midpoints <- seq(from = 1.875, to= 3.825, by = 0.15)
 
 data_ecogroups$midpoints = midpoints
-
-
 
 #### 2. Linear model for Ecogroup 1 ####
 
@@ -191,11 +188,6 @@ setwd("/Users/ekaterina.larina/Dropbox/Nature Geo 2024/figures/ecogroups linear 
 ggsave(plot = plots_eco1, filename = "Ecogroup1.png", width = 8, height = 10, dpi = 300)
 
 
-
-
-
-
-
 #### 4. Linear model for Ecogroup 2 ####
 
 # Fit a linear model for each hemisphere in each ocean
@@ -346,7 +338,6 @@ plots_eco2
 setwd("/Users/ekaterina.larina/Dropbox/Nature Geo 2024/figures/ecogroups linear trends")
 
 ggsave(plot = plots_eco2, filename = "Ecogroup2.png", width = 8, height = 10, dpi = 300)
-
 
 
 #### 6. Linear model for Ecogroup 3 ####
@@ -651,8 +642,6 @@ plots_eco4
 setwd("/Users/ekaterina.larina/Dropbox/Nature Geo 2024/figures/ecogroups linear trends")
 
 ggsave(plot = plots_eco4, filename = "Ecogroup4.png", width = 8, height = 10, dpi = 300)
-
-
 
 
 ### 10. Linear model for Ecogroup 5 ####

@@ -2,7 +2,7 @@
 ### Ecogroup Relative Abundance ####
 
 # This script calculates ecogroup relative abundance and produces the raw plots 
-#for Figure 3 of the manuscript and Figure 2 and 8 of the supplementary material. 
+#for Figure 3 of the manuscript, as well as Figure 2 and 8 of the supplementary material. 
 # Final figures were created in Illustrator.
 
 # install relevant packages for calculating ecogroup relative abundance

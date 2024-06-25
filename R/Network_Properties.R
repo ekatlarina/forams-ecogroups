@@ -1,6 +1,6 @@
 ### Network Properties ####
 
-# This script calculates network properties at the node level using the 'bipartite' R library.
+# This script calculates network properties at the node level using the 'bipartite' package.
 # In the final analysis, we only adapt the Ecogroup Species Specificity Index.
 # This script also produces the raw plots for Figures 2C, 2E, and 2G of the manuscript.
 # The final figure was created in Illustrator.
