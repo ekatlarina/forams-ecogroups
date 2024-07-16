@@ -10,6 +10,9 @@ Ekaterina Larina<sup>1</sup>, Adam Woodhouse<sup>2,3</sup>, Anshuman Swain<sup>4
 <sup>5</sup>  Museum of Comparative Zoology, Harvard University, Cambridge, MA 02138.
 <sup>6</sup> Department of Earth and Planetary Sciences, University of New Mexico, Albuquerque, NM 87131, U.S.A.
 
+## Project description
+Current global warming is already disproportionately affecting marine zooplankton communities due to the spatial variability of climate change. Despite ongoing efforts, comprehensive high-resolution studies of zooplankton across broad geographical scales and geological times remain scarce. The newly compiled Triton dataset addresses this gap by offering a detailed record of global fossil occurrences of planktonic foraminifera. This dataset enables the exploration of species diversity and functional dynamics with unmatched resolution, shedding light on changes in the vertical temperature structure of oceans and the associated responses of planktonic foraminifera communities at a regional scale. The importance of this work lies in its comprehensive analysis of planktonic foraminifera during the Pliocene-early Pleistocene period, a time marked by significant climatic fluctuations that are analogous to current and projected climate changes. By using a high-resolution, basin-wide approach, our findings highlight the role of enhanced water column stratification and nutrient delivery, associated with bipolar ice sheet development, in restructuring species diversity and ecogroup latitudinal equitability gradients towards modern patterns.  
+
 ## Brief file descriptions for this repository
 ### Data
 **Triton_df_Oceans.RData** This file contains three dataframes with planktic foraminifera data for the Atlantic, Pacific, and Indian Oceans, derived from the Triton database used in this study.
