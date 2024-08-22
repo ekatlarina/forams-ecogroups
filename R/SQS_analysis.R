@@ -204,9 +204,6 @@ SQS_CSIB_all <- plot_grid(plot_SQS_AO_CSIB, plot_SQS_PO_CSIB, plot_SQS_IO_CSIB, 
 
 print(SQS_CSIB_all)
 
-
-setwd("/Users/ekaterina.larina/Dropbox/Nature Geo 2024/figures/subsampling plots")
-
 ggsave(plot = SQS_CSIB_all, filename = "SQS_CSIB_by_Oceans_SpDiv.png", width = 8, height = 10, dpi = 300)
 
 #### 6. Run SQS for ecogroup diversity and plot the results for the Atlantic Ocean (Figure 4B) ####
@@ -355,7 +352,6 @@ plot_SQS_IO_CSIB = ggplot(SQS_IO_eco_combined, aes(x=midpoints, y=divCSIB)) +
 
 print(plot_SQS_IO_CSIB)
 
-
 # Combine the plots using plot_grid
 
 SQS_CSIB_eco <- plot_grid(plot_SQS_AO_CSIB, plot_SQS_PO_CSIB, plot_SQS_IO_CSIB, ncol = 1, align = "v")
@@ -363,8 +359,6 @@ SQS_CSIB_eco <- plot_grid(plot_SQS_AO_CSIB, plot_SQS_PO_CSIB, plot_SQS_IO_CSIB, 
 # Display the combined plot
 
 print(SQS_CSIB_eco)
-
-#setwd("/Users/ekaterina.larina/Dropbox/Nature Geo 2024/figures/subsampling plots")
 
 #ggsave(plot = SQS_CSIB_eco, filename = "SQS_CSIB_by_Oceans_EcoDiv.png", width = 8, height = 10, dpi = 300)
 
