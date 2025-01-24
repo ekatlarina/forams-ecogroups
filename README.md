@@ -19,6 +19,8 @@ Current global warming is already disproportionately affecting marine zooplankto
 ### Base scripts in R
 **Ecogroups_Relative_Abundance.R** This script calculates ecogroup relative abundance and produces the raw plots for Figure 3 of the manuscript, as well as Figures 2 and 8 of the supplementary material. 
 
+**ESI by Hemisphere.R** This script calculates the Ecogroup Specialization Index (ESI) for the Northern and Southern Hemispheres across the Atlantic, Pacific, and Indian Oceans. It also generates the raw plots for Figures 2A, 2C, and 2E of the manuscript.
+
 **Fitted_Linear_Models.R** This script calculates fitted linear models of the relative abundances of five ecogroups by hemisphere across the Atlantic, Pacific, and Indian Oceans.
 
 **Network_Properties.R** This script calculates network properties at the node level using the 'bipartite' package. This script also produces the raw plots for Figures 2B, 2D, and 2F of the manuscript.
