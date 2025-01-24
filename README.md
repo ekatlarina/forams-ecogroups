@@ -27,7 +27,7 @@ Current global warming is already disproportionately affecting marine zooplankto
 
 **Null_Models.R** This script uses 'econullnetr' package to run null models and produces the raw plots for Figures 10, 11, and 12 of the supplementary material. 
 
-**SQS_analysis.R** This script calculates the corrected sample-in-bin metric, utilizing the shareholder quorum subsampling (SQS) method. This script also produces the raw plots for Figure 4 of the manuscript.
+**SQS_analysis.R** This script calculates the corrected sample-in-bin metric, utilizing the shareholder quorum subsampling (SQS) method. This script also produces the raw plots for Figure 4 of the manuscript and Figures 18 and 19 of the supplementary material.
 
 **Sample Completeness iNEXT.R** This script assesses dataset completeness. It examines the sampling coverage and frequency of each unique ecogroup within a paleolatitudinal band during each time interval, utilizing the iNEXT package.
 
