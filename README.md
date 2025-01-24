@@ -21,7 +21,7 @@ Current global warming is already disproportionately affecting marine zooplankto
 
 **Fitted_Linear_Models.R** This script calculates fitted linear models of the relative abundances of five ecogroups by hemisphere across the Atlantic, Pacific, and Indian Oceans.
 
-**Network_Properties.R** This script calculates network properties at the node level using the 'bipartite' package. This script also produces the raw plots for Figures 2C, 2E, and 2G of the manuscript.
+**Network_Properties.R** This script calculates network properties at the node level using the 'bipartite' package. This script also produces the raw plots for Figures 2B, 2D, and 2F of the manuscript.
 
 **Null_Models.R** This script uses 'econullnetr' package to run null models and produces the raw plots for Figures 10, 11, and 12 of the supplementary material. 
 
