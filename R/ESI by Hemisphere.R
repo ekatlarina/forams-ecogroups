@@ -1,10 +1,10 @@
 ### ESI by Hemisphere ####
 
-# This script calculates network properties at the node level using the 'bipartite' R library.
-# In the final analysis, we only use the Ecogroup Species Specificity Index or
-# which we refer to in the manuscript Ecogroup Specialization Index (ESI).
-# This script also produces the raw plots for Figures 2A, 2C, and 2E of the manuscript.
-# The final figure was created in Illustrator.
+# This script analyzes network properties at the node level using the 'bipartite' R package. 
+# In the final analysis, we focus on the Ecogroup Specialization Index (ESI), 
+# referred to as the Ecogroup Species Specificity Index in the dataset. The script 
+# generates raw plots for Figures 2A, 2C, and 2E of the manuscript, which are further 
+# refined and finalized in Illustrator.
 
 
 # install relevant packages for data morphing and calculating network metrics 
