@@ -12,6 +12,7 @@
 install.packages("dplyr")
 install.packages("tidyr")
 install.packages("reshape2")
+install.packages("bipartite")
 install.packages("ggplot2")
 
 # load libraries
@@ -19,6 +20,7 @@ install.packages("ggplot2")
 library(dplyr) # used for data manipulation and transformation
 library(tidyr) # used for data tidying and reshaping
 library(reshape2) # used for data reshaping and aggregation
+library(bipartite) # used for the analysis of bipartite networks
 library(ggplot2) # used for plotting data
 
 #### 1. Set paths for source files and configure the environment. ####
@@ -27,7 +29,7 @@ library(ggplot2) # used for plotting data
 # setwd(" YOUR WORKING DIRECTORY ")
 setwd("/Users/ekaterina.larina/Dropbox/Nature Geo 2024/RData files")
 
-# load data frames containing planktic foraminiferal data from Triton database
+# load data frames containing planktic foraminiferal data from the Triton database
 # for the Atlantic, Pacific, and Indian Oceans
 
 load("Triton_df_Oceans.RData")
@@ -35,7 +37,7 @@ load("Triton_df_Oceans.RData")
 # define a sequence of time bins
 roundage = seq(from = 1.8, to = 3.75, by = 0.15)
 
-#### 2. Create lists for each basins ####
+#### 2. Create lists for each basin ####
 
 timebinsPleiPli_AO = list()
 
@@ -116,15 +118,15 @@ for (i in 1:length(roundage)){
 
 #### Indian Ocean ####
 
-forLL_eco_PliPL_150k_IO = NULL #eco - ecotype properties for each timebin network
-forHL_eco_PliPL_150k_IO = NULL #eco - latitudinal properties for each timebin network
+forLL_eco_PliPL_150k_IO = NULL #eco - ecotype properties for each time bin network
+forHL_eco_PliPL_150k_IO = NULL #eco - latitudinal properties for each time bin network
 
 
 for (i in 1:length(roundage)){
   
   # creating properties for ecogroups
   pt = as.data.frame(table(timebinsPleiPli_IO[[i]]$Hemisphere, timebinsPleiPli_IO[[i]]$ecogroup)) # table with counts of ecogroups 
-  pt$Freq = as.numeric(pt$Freq) # converting column Freq(how many times each eacogroup occurs) numeric
+  pt$Freq = as.numeric(pt$Freq) # converting column Freq(how many times each ecogroup occurs) numeric
   pt2 = as.data.frame(acast(pt, Var1~Var2, value.var="Freq")) # creating a wide table where columns are ecogroups
   
   # calculate various indices for network properties at the species level specieslevel()
