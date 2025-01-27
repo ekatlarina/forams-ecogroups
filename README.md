@@ -17,6 +17,9 @@ Current global warming is already disproportionately affecting marine zooplankto
 ### Data
 **Triton_df_Oceans.RData** This file contains three dataframes with planktic foraminifera data for the Atlantic, Pacific, and Indian Oceans, derived from the Triton database used in this study.
 ### Base scripts in R
+
+**Core_locations_map.R**This script depicts the locations of cores used in this study on a global map and generates the raw plot for Figure 1. 
+
 **Ecogroups_Relative_Abundance.R** This script calculates ecogroup relative abundance and produces the raw plots for Figure 3 of the manuscript, as well as Figures 2 and 8 of the supplementary material. 
 
 **ESI by Hemisphere.R** This script calculates the Ecogroup Specialization Index (ESI) for the Northern and Southern Hemispheres across the Atlantic, Pacific, and Indian Oceans. It also generates the raw plots for Figures 2A, 2C, and 2E of the manuscript.
