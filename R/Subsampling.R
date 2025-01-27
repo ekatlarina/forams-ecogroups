@@ -1,7 +1,8 @@
 # Ecogroup Distributions from Raw and Subsampled Data Across Hemispheres
 
 # This script performs resampling of ecogroup distribution data without replacement and
-# produces the raw plots for Figure 9 of the supplementary material
+# produces the raw plots for Figure 9 of the supplementary material. The final figure was refined and 
+# created in Illustrator.
 
 # install relevant packages for calculating ecogroup distributions
 install.packages("ggplot2")
