@@ -15,10 +15,10 @@ library(gplots)
 #### 1. set paths for source files and configure the environment. ####
 
 # set the working directory 
-# setwd(" YOUR WOKRING DIRECTORY ")
+# setwd(" YOUR WORKING DIRECTORY ")
 
 
-# load the dataframes containing planktonic foraminiferal data from Triton database
+# load the dataframes containing planktonic foraminiferal data from the Triton database
 # for the Atlantic, Pacific, and Indian Oceans
 load("Triton_df_Oceans.RData")
 
@@ -26,7 +26,7 @@ load("Triton_df_Oceans.RData")
 K = unique(Triton_Pacific$round.150K)
 
 # define color palette for the plots
-colfunc = colorRampPalette(c("red3", "grey95","royalblue4"))
+colfunc = colorRampPalette(c("#440154FF", "#1F968BFF", "#FDE725FF"))
 
 # define breaks for the legend
 legend_breaks <- seq(0, 1, length.out = 81)
