@@ -127,7 +127,7 @@ forHLeco_IO = Eco_Network_Function(tb = roundagePleiPl_150K, ls = timebinsPleiPl
 ##### 6. Plot a heatmap for the Atlantic Ocean ####
 
 # Define color gradient function for heatmap
-colfunc = colorRampPalette(c("royalblue4", "grey95", "red3"))
+colfunc = colorRampPalette(c("#440154FF", "#1F968BFF", "#FDE725FF"))
 
 # Convert time bins to factors and prepare data frame for heatmap creation
 forHLeco_AO$timeslab = as.factor(forHLeco_AO$timeslab)
