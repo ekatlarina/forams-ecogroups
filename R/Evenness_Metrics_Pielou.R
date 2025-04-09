@@ -1,6 +1,6 @@
 # Evenness Metrics - Pielou
 
-# This script calculates the Pielou's evenness metric for species and ecogroups.
+# This script calculates Pielou's evenness metric for species and ecogroups.
 # It also generates raw plots for Figures 15 and 16 in the supplementary material.
 # Final figures were created in Illustrator.
 
