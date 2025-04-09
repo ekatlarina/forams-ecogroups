@@ -1,15 +1,17 @@
 # Ecogroup Distributions from Raw and Subsampled Data Across Hemispheres
 
-# This script performs resampling of ecogroup distribution data without replacement and
-# produces the raw plots for Figure 9 of the supplementary material. The final figure was refined and 
-# created in Illustrator.
+# This script performs resampling of ecogroup distribution data without 
+# replacement and produces the raw plots for Figure 9 of the supplementary 
+# material
 
 # install relevant packages for calculating ecogroup distributions
 install.packages("ggplot2")
 install.packages("dplyr")
+install.packages("gridExtra")  
 
 library(ggplot2) # used for plotting data
 library(dplyr) # used for data manipulation and transformation
+library(gridExtra) # used to arrange plots on one page
 
 #### 1. set paths for source files and configure the environment. ####
 
@@ -49,47 +51,88 @@ title_IO_SH = "Indian Southern Hemisphere: Ecogroups"
  
 #### 2. execute the functions defined in the script #### 
 
-# the 'calculate_proportions' function performs resampling of ecogroup distribution data without 
-# replacement 1000 times for each 150-kyr time bin, matching the smallest occurrence count 
-# observed in any 150-kyr bin
- 
-calculate_proportions <- function(data_list, K, it, nval, tb) {
+# the 'calculate_proportions' function performs resampling of ecogroup 
+# distribution data without replacement for each 150-kyr time bin, matching 
+# the smallest occurrence count of planktic foraminifera observed in any 150-kyr bin
+
+ #calculate_proportions <- function(data_list, K, it, nval, tb) {
  
 # initialize an empty dataframe to store the mean results for all time bins
-  for_eco_ResMean <- NULL
+#  for_eco_ResMean <- NULL
   
 # loop over each time bin
-  for (i in 1:K) {
+#  for (i in 1:K) {
 # initialize an empty dataframe for accumulating resampled results
-    for_eco_re0 <- NULL
+#    for_eco_re0 <- NULL
 # perform resampling of 1000 iterations for the current time bin
-    for (j in 1:it) {
+#    for (j in 1:it) {
 # resample the data without replacement
-      rowselect <- data_list[[i]] %>% 
-        sample_n(size = nval, replace = FALSE)
+#      rowselect <- data_list[[i]] %>% 
+#        sample_n(size = nval, replace = FALSE)
 # calculate the proportion of occurrences for each ecogroup at each time point
-      proportion_data <- rowselect %>%
+#      proportion_data <- rowselect %>%
+#        group_by(ecogroup) %>%
+#        summarise(count = n(), .groups = 'drop') %>%
+#        mutate(proportion = count / sum(count))
+# accumulate all the results in one dataframe
+#      for_eco_re0 <- rbind(for_eco_re0, proportion_data)
+#    }
+# recording the mean of resampled results
+#    netrand_eco <- for_eco_re0 %>%
+#      group_by(ecogroup) %>%
+#      summarise(across(where(is.numeric), mean, na.rm = TRUE))
+# adding time bin to the dataframes
+#    netrand_eco$timebin <- tb[i]
+# accumulate the mean results for all time bins
+#    for_eco_ResMean <- rbind(for_eco_ResMean, netrand_eco)
+#    print(paste("Finished Timebin", i))    
+#  }
+#  return(for_eco_ResMean)
+#}
+
+# the 'calculate_proportions_by_core' function performs resampling of ecogroup 
+# distribution data without replacement for each 150-kyr time bin, matching 
+# the smallest number of cores in any 150-kyr bin
+
+calculate_proportions_by_core <- function(data_list, K, it, n_cores_min, tb) {
+  for_eco_ResMean <- NULL
+  
+  for (i in 1:K) {
+    time_bin_data <- data_list[[i]]
+    unique_cores <- unique(time_bin_data$holeID)
+    
+   if (length(unique_cores) < n_cores_min) next  # skip if not enough cores
+
+    for_eco_re0 <- NULL
+    
+    for (j in 1:it) {
+      sampled_cores <- sample(unique_cores, size = n_cores_min, replace = FALSE)
+      subset_data <- time_bin_data %>% filter(holeID %in% sampled_cores)
+
+      proportion_data <- subset_data %>%
         group_by(ecogroup) %>%
         summarise(count = n(), .groups = 'drop') %>%
         mutate(proportion = count / sum(count))
-# accumulate all the results in one dataframe
+
       for_eco_re0 <- rbind(for_eco_re0, proportion_data)
     }
-# recording the mean of resampled results
+    
     netrand_eco <- for_eco_re0 %>%
       group_by(ecogroup) %>%
       summarise(across(where(is.numeric), mean, na.rm = TRUE))
-# adding time bin to the dataframes
+    
     netrand_eco$timebin <- tb[i]
-# accumulate the mean results for all time bins
     for_eco_ResMean <- rbind(for_eco_ResMean, netrand_eco)
-    print(paste("Finished Timebin", i))    
+    
+    print(paste("Finished Timebin", i))
   }
+  
   return(for_eco_ResMean)
 }
+
  
- # the 'eco_proportion' function calculates the proportion of occurrences for each ecogroup at 
- # each time bin
+# the 'eco_proportion' function calculates the proportion of occurrences for 
+# each ecogroup at each time bin
 eco_proportion <- function(df){
  return(df = df %>%
   group_by(round.150K, ecogroup) %>%
@@ -111,7 +154,7 @@ violin <- function(data, title){
   ggplot(data, aes(x = source, y = proportion)) + 
   geom_violin(aes(fill = source), color = "darkgray") +
   geom_boxplot(width = 0.1, fill = "white", color = "black") +  
-  scale_fill_manual(values = c("Raw" = "lightblue", "Subsampled" = "pink"))+
+  scale_fill_manual(values = c("Raw" = "#E6A67A", "Subsampled" = "#6E5C42"))+
   labs(title = title, y = "Proportion") 
 }
 
@@ -121,17 +164,29 @@ violin <- function(data, title){
 timebinsPleiPli_AO_NH <- list()
 
 for (i in 1:length(roundage150K)) {
-  timebinsPleiPli_AO_NH[[i]] <- my_data_AO_NH[which(my_data_AO_NH$round.150K == roundage150K[i]),]
+  timebinsPleiPli_AO_NH[[i]] <- 
+    my_data_AO_NH[which(my_data_AO_NH$round.150K == roundage150K[i]),]
 }
 # define smallest number of total occurrences across all 14 bins
-nval <- min(sapply(timebinsPleiPli_AO_NH,nrow)) 
+#nval <- min(sapply(timebinsPleiPli_AO_NH,nrow)) 
+
+# define the smallest number of cores across all 14 bins
+
+n_cores_min <- min(sapply(timebinsPleiPli_AO_NH, function(df) 
+  length(unique(df$holeID))))
+
+
 # calculate resampled count and proportions for each ecogroup within each time bin
-for_eco_ResMean_AO_NH <- calculate_proportions(data_list = timebinsPleiPli_AO_NH, K = K, 
-                                                    it = it, nval = nval, tb = roundage150K)
+for_eco_ResMean_AO_NH <- calculate_proportions_by_core(data_list = timebinsPleiPli_AO_NH, 
+                                                       K = K, it = it, 
+                                                       n_cores_min = n_cores_min, 
+                                                       tb = roundage150K)
 # calculate raw count and proportions for each ecogroup within each time bin
 proportion_data_eco_raw_AO_NH <- eco_proportion(my_data_AO_NH) 
+                          
 #calculate the difference between the raw and resampled data
 df_diff_eco <- proportion_data_eco_raw_AO_NH$proportion - for_eco_ResMean_AO_NH$proportion
+
 # combine two dataframes
 combined_AO_NH <- combined_data(proportion_data_eco_raw_AO_NH, for_eco_ResMean_AO_NH)
 
@@ -149,9 +204,18 @@ for (i in 1:length(roundage150K)) {
   timebinsPleiPli_AO_SH[[i]]= my_data_AO_SH[which(my_data_AO_SH$round.150K == roundage150K[i]),]
 }
 
-nval = min(sapply(timebinsPleiPli_AO_SH,nrow)) #smallest number of total occurrences across all 14 bins
-for_eco_ResMean_AO_SH = calculate_proportions(data_list = timebinsPleiPli_AO_SH, K = K, 
-                                                    it = it, nval = nval, tb = roundage150K)
+# nval = min(sapply(timebinsPleiPli_AO_SH,nrow)) 
+#smallest number of cores across 14 bins
+n_cores_min <- min(sapply(timebinsPleiPli_AO_SH, function(df) 
+  length(unique(df$holeID))))
+
+
+# calculate resampled count and proportions for each ecogroup within each time bin
+for_eco_ResMean_AO_SH <- calculate_proportions_by_core(data_list = timebinsPleiPli_AO_SH, 
+                                                       K = K, it = it, 
+                                                       n_cores_min = n_cores_min, 
+                                                       tb = roundage150K)
+
 proportion_data_eco_raw_AO_SH = eco_proportion(my_data_AO_SH) 
 
 df_diff_eco = proportion_data_eco_raw_AO_SH$proportion - for_eco_ResMean_AO_SH$proportion
@@ -170,10 +234,13 @@ for (i in 1:length(roundage150K)) {
   timebinsPleiPli_PO_NH[[i]]= my_data_PO_NH[which(my_data_PO_NH$round.150K == roundage150K[i]),]
 }
 
-nval = min(sapply(timebinsPleiPli_PO_NH,nrow)) #smallest number of total occurrences across all 14 bins
+# nval = min(sapply(timebinsPleiPli_PO_NH,nrow)) #smallest number of total occurrences across all 14 bins
 
-for_eco_ResMean_PO_NH = calculate_proportions(data_list = timebinsPleiPli_PO_NH, K = K, it = it, 
-                                              nval = nval, tb = roundage150K)
+n_cores_min <- min(sapply(timebinsPleiPli_PO_NH, function(df) 
+  length(unique(df$holeID))))
+
+for_eco_ResMean_PO_NH = calculate_proportions_by_core(data_list = timebinsPleiPli_PO_NH, K = K, it = it, 
+                                              n_cores_min = n_cores_min, tb = roundage150K)
 # calculate raw count and proportions for each ecogroup within each time bin
 proportion_data_eco_raw_PO_NH = eco_proportion(my_data_PO_NH) 
 
@@ -196,9 +263,13 @@ for (i in 1:length(roundage150K)) {
   timebinsPleiPli_PO_SH[[i]]= my_data_PO_SH[which(my_data_PO_SH$round.150K == roundage150K[i]),]
 }
 
-nval = min(sapply(timebinsPleiPli_PO_SH,nrow)) 
-for_eco_ResMean_PO_SH = calculate_proportions(data_list = timebinsPleiPli_PO_SH, K = K, it = it, 
-                                              nval = nval, tb = roundage150K)
+# nval = min(sapply(timebinsPleiPli_PO_SH,nrow)) 
+
+n_cores_min <- min(sapply(timebinsPleiPli_PO_SH, function(df) 
+  length(unique(df$holeID))))
+
+for_eco_ResMean_PO_SH = calculate_proportions_by_core(data_list = timebinsPleiPli_PO_SH, K = K, it = it, 
+                                              n_cores_min = n_cores_min, tb = roundage150K)
 
 proportion_data_eco_raw_PO_SH = eco_proportion(my_data_PO_SH) 
 
@@ -218,9 +289,12 @@ for (i in 1:length(roundage150K)) {
   timebinsPleiPli_IO_NH[[i]]= my_data_IO_NH[which(my_data_IO_NH$round.150K == roundage150K[i]),]
 }
 
-nval = min(sapply(timebinsPleiPli_IO_NH,nrow)) 
-for_eco_ResMean_IO_NH = calculate_proportions(data_list = timebinsPleiPli_IO_NH, K = K, it = it, 
-                                              nval = nval, tb = roundage150K)
+#nval = min(sapply(timebinsPleiPli_IO_NH,nrow)) 
+n_cores_min <- min(sapply(timebinsPleiPli_IO_NH, function(df) 
+  length(unique(df$holeID))))
+
+for_eco_ResMean_IO_NH = calculate_proportions_by_core(data_list = timebinsPleiPli_IO_NH, K = K, it = it, 
+                                           n_cores_min = n_cores_min, tb = roundage150K)
 
 proportion_data_eco_raw_IO_NH = eco_proportion(my_data_IO_NH) 
 df_diff_eco = proportion_data_eco_raw_IO_NH$proportion - for_eco_ResMean_IO_NH$proportion
@@ -237,9 +311,12 @@ for (i in 1:length(roundage150K)) {
   timebinsPleiPli_IO_SH[[i]]= my_data_IO_SH[which(my_data_IO_SH$round.150K == roundage150K[i]),]
 }
 
-nval = min(sapply(timebinsPleiPli_IO_SH,nrow)) 
-for_eco_ResMean_IO_SH = calculate_proportions(data_list = timebinsPleiPli_IO_SH, K = K, it = it, 
-                                              nval = nval, tb = roundage150K)
+#nval = min(sapply(timebinsPleiPli_IO_SH,nrow)) 
+n_cores_min <- min(sapply(timebinsPleiPli_IO_SH, function(df) 
+  length(unique(df$holeID))))
+
+for_eco_ResMean_IO_SH = calculate_proportions_by_core(data_list = timebinsPleiPli_IO_SH, K = K, it = it, 
+                                              n_cores_min = n_cores_min, tb = roundage150K)
 proportion_data_eco_raw_IO_SH = eco_proportion(my_data_IO_SH) 
 
 df_diff_eco = proportion_data_eco_raw_IO_SH$proportion - for_eco_ResMean_IO_SH$proportion
