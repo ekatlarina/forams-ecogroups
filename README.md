@@ -1,14 +1,16 @@
-# Impact of Climate Variability on Planktic Foraminifera: Unveiling Distinct Ecological Behaviors across the Pliocene-early Pleistocene
+# Regional restructuring in planktic foraminifera communities through Pliocene-early Pleistocene climate variability 
 
 **Team members:**
-Ekaterina Larina<sup>1</sup>, Adam Woodhouse<sup>2,3</sup>, Anshuman Swain<sup>4,5</sup>, Christopher M. Lowery<sup>2</sup>, Rowan C. Martindale<sup>1</sup>, and Corinne E. Myers<sup>6</sup>
+Ekaterina Larina<sup>1</sup>, Adam Woodhouse<sup>2,3,4</sup>, Anshuman Swain<sup>5,6,7</sup>, Christopher M. Lowery<sup>2</sup>, Rowan C. Martindale<sup>1</sup>, and Corinne E. Myers<sup>8</sup>
 
-<sup>1</sup> Jackson School of Geosciences, University of Texas at Austin, Austin, TX, 78712, USA.
-<sup>2</sup> University of Texas Institute for Geophysics, Jackson School of Geosciences, University of   Texas at Austin, Austin, TX, 78758, U.S.A.
-<sup>3</sup> School of Earth Sciences, University of Bristol, Bristol, BS8 1 RJ, United Kingdom.
-<sup>4</sup> Department of Organismic and Evolutionary Biology, Harvard University, Cambridge, MA 02138.
-<sup>5</sup>  Museum of Comparative Zoology, Harvard University, Cambridge, MA 02138.
-<sup>6</sup> Department of Earth and Planetary Sciences, University of New Mexico, Albuquerque, NM 87131, U.S.A.
+<sup>1</sup> Department of Earth and Planetary Sciences, Jackson School of Geosciences, University of Texas at Austin, Austin, TX, 78712, USA
+<sup>2</sup> University of Texas Institute for Geophysics, Jackson School of Geosciences, University of   Texas at Austin, Austin, TX, 78758, USA
+<sup>3</sup> School of Earth Sciences, University of Bristol, Bristol, BS8 1 RJ, United Kingdom
+<sup>4</sup> School of Earth and Environmental Sciences, Cardiff University, Cardiff, CF10 3AT, United Kingdom
+<sup>5</sup> Department of Ecology and Evolutionary Biology, University of Michigan, Ann Arbor, MI 48109, USA
+<sup>6</sup> Museum of Paleontology, University of Michigan, Ann Arbor, MI 48109, USA
+<sup>7</sup> Department of Organismic and Evolutionary Biology, Harvard University, Cambridge, MA 02138, USA
+<sup>8</sup> Department of Earth and Planetary Sciences, University of New Mexico, Albuquerque, NM 87131, USA
 ##
 **Journal:** Nature Communications
 
@@ -20,21 +22,21 @@ Current global warming is already disproportionately affecting marine zooplankto
 **Triton_df_Oceans.RData** This file contains three dataframes with planktic foraminifera data for the Atlantic, Pacific, and Indian Oceans, derived from the Triton database used in this study.
 ### Base scripts in R
 
-**Core_locations_map.R**This script depicts the locations of cores used in this study on a global map and generates the raw plot for Figure 1. 
+**Core_locations_map.R**This script depicts the locations of cores used in this study on a global map and generates the raw plot for Supplementary Figure 1. 
 
-**Ecogroups_Relative_Abundance.R** This script calculates ecogroup relative abundance and produces the raw plots for Figure 3 of the manuscript, as well as Figures 2 and 8 of the supplementary material. 
+**Ecogroups_Relative_Abundance.R** This script calculates ecogroup relative abundance and produces the raw plots for Figure 3 of the manuscript, as well as Supplementary Figures 2 and 8. 
 
 **ESI by Hemisphere.R** This script calculates the Ecogroup Specialization Index (ESI) for the Northern and Southern Hemispheres across the Atlantic, Pacific, and Indian Oceans. It also generates the raw plots for Figures 2A, 2C, and 2E of the manuscript.
 
-**Fitted_Linear_Models.R** This script calculates fitted linear models of the relative abundances of five ecogroups by hemisphere across the Atlantic, Pacific, and Indian Oceans.
+**Fitted_Linear_Models.R** This script calculates fitted linear models of the relative abundances of five ecogroups by hemisphere across the Atlantic, Pacific, and Indian Oceans.It also generates Supplementary Figures 3 to 7.
 
 **Network_Properties.R** This script calculates network properties at the node level using the 'bipartite' package. This script also produces the raw plots for Figures 2B, 2D, and 2F of the manuscript.
 
-**Null_Models.R** This script uses 'econullnetr' package to run null models and produces the raw plots for Figures 10, 11, and 12 of the supplementary material. 
+**Null_Models.R** This script uses 'econullnetr' package to run null models and produces the raw plots for Supplementary Figures 10 to 12. 
 
-**SQS_analysis.R** This script calculates the corrected sample-in-bin metric, utilizing the shareholder quorum subsampling (SQS) method. This script also produces the raw plots for Figure 4 of the manuscript and Figures 18 and 19 of the supplementary material.
+**SQS_analysis.R** This script calculates the corrected sample-in-bin metric, utilizing the shareholder quorum subsampling (SQS) method. This script also produces the raw plots for Figure 4 of the manuscript and Supplementary Figures 18 and 19.
 
-**Sample Completeness iNEXT.R** This script assesses dataset completeness. It examines the sampling coverage and frequency of each unique ecogroup within a paleolatitudinal band during each time interval, utilizing the iNEXT package.
+**Sample Completeness iNEXT.R** This script assesses dataset completeness. It examines the sampling coverage and frequency of each unique ecogroup within a paleolatitudinal band during each time interval, utilizing the iNEXT package. It also generates the raw plot for Supplementary Figure 17. 
 
 **Subsampling.R** This script performs resampling of ecogroup distribution data without replacement and produces the raw plots for Figure 9 of the supplementary material.
 
