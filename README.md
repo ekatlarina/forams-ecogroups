@@ -38,6 +38,6 @@ Current global warming is already disproportionately affecting marine zooplankto
 
 **Sample Completeness iNEXT.R** This script assesses dataset completeness. It examines the sampling coverage and frequency of each unique ecogroup within a paleolatitudinal band during each time interval, utilizing the iNEXT package. It also generates the raw plot for Supplementary Figure 17. 
 
-**Subsampling.R** This script performs resampling of ecogroup distribution data without replacement and produces the raw plots for Figure 9 of the supplementary material.
+**Subsampling.R** This script performs resampling of ecogroup distribution data without replacement and produces the raw plots for Supplementary Figure 9.
 
-**Evenness_Metrics_Pielou.R** This script calculates Pielou's evenness metric for species and ecogroups and produces raw plots for Figures 15 and 16 of the supplementary material.
+**Evenness_Metrics_Pielou.R** This script calculates Pielou's evenness metric for species and ecogroups and produces raw plots for Supplementary Figures 15 and 16.
