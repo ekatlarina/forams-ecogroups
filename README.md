@@ -41,3 +41,6 @@ Current global warming is already disproportionately affecting marine zooplankto
 **Subsampling.R** This script performs resampling of ecogroup distribution data without replacement and produces the raw plots for Supplementary Figure 9.
 
 **Evenness_Metrics_Pielou.R** This script calculates Pielou's evenness metric for species and ecogroups and produces raw plots for Supplementary Figures 15 and 16.
+
+**Sample Completeness by Hemisphere iNEXT.R** This script assesses dataset completeness by examining the sampling completeness of species and ecogroups within each hemisphere 
+across the Atlantic, Pacific, and Indian Oceans.  It also generates the raw plot for Supplementary Figure 13 and 14. 
