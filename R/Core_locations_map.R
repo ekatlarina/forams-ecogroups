@@ -2,11 +2,11 @@
 # Map of sediment cores used in the study
 
 # This script depicts the locations of cores used in this study on a global map and 
-# generates the raw plot for Figure 1. The final figure was refined and 
+# generates the raw plot for Supplementary Figure 1. The final figure was refined and 
 # created in Illustrator.
 
 # set the working directory 
-# setwd(" YOUR WOKRING DIRECTORY ")
+# setwd(" YOUR WORKING DIRECTORY ")
 
 # load dataframes containing planktic foraminiferal data from the Triton database
 # for the Atlantic, Pacific, and Indian Oceans
