@@ -29,12 +29,12 @@ map <- map_data("world")
 
 # Define color palette for the oceans
 
-ocean_colors <- c("Atlantic" = "#1b9e77", "Pacific" = "#d95f02", "Indian" = "#7570b3")
+ocean_colors <- c("Atlantic" = "#D8A07A", "Pacific" = "#7B6142", "Indian" = "#2C1B0F")
 
 # Plot the data
 plot.map <- ggplot() +
   geom_polygon(data = map, aes(long, lat, group = group), 
-               fill = "grey22", colour = "grey95") +
+               fill = "grey70", colour = "grey90") +
   labs(x = "Longitude [DecDeg]", y = "Latitude [DecDeg]") +
   geom_point(data = cores_map, aes(x = pal.long, y = pal.lat, fill = ocean), 
              colour = "grey", size = 3, shape = 21) +  # Using shape 21 with fill
